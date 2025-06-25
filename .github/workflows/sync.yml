@@ -11,13 +11,7 @@ permissions: write-all
 jobs:
  build:
   runs-on: ubuntu-latest
-  permissions:
-    id-token: write
   steps:
-    - name: Debug OIDC Claims
-      uses: github/actions-oidc-debugger@main
-      with:
-        audience: "octo-debugger"
     - name: Create upstream version tag
       uses: DataDog/sync-upstream-release-tag@main
       with:

@@ -1,0 +1,22 @@
+name: Test
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+  # Allows manual workflow run
+  workflow_dispatch:
+  push:
+    branches:
+      - fricounet/configure-octo-sts
+
+# permissions: write-all
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  permissions:
+      id-token: write
+  steps:
+    - name: Debug OIDC Claims
+      uses: github/actions-oidc-debugger@main
+      with:
+        audience: "octo-debugger"

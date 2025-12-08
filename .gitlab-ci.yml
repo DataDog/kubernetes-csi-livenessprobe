@@ -18,5 +18,12 @@ build-nydus-image:
   needs: ["build-docker-image"]
   variables:
     IMAGE_NAME: csi-livenessprobe
+  extends: .build-nydus-image
+
+build-merged-nydus-image:
+  needs: ["build-docker-image"]
+  variables:
+    IMAGE_NAME: csi-livenessprobe
     MERGE_PLATFORM: "true"
+    IMAGE_SUFFIX: "-merged-nydus"
   extends: .build-nydus-image
